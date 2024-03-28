@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWorld", "HelloWorld", "{4347B392-8B6E-4700-A815-A3673DCD622F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld.Analysis", "HelloWorld\HelloWorld.Analysis\HelloWorld.Analysis.csproj", "{ABC4142D-6818-4719-BD42-2D5CA1902B2A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "HelloWorld\HelloWorld\HelloWorld.csproj", "{262D8FD0-8B2A-484F-98C6-1B6AB16DE843}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWorld-IncrementalGenerator", "HelloWorld-IncrementalGenerator", "{ED7887BB-4E62-4A79-82A6-8652EC26B15F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld-IncrementalGenerator", "HelloWorld-IncrementalGenerator\HelloWorld-IncrementalGenerator\HelloWorld-IncrementalGenerator.csproj", "{11D5B386-1C81-4F36-8B66-B7222A879AC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld-IncrementalGenerator.Analysis", "HelloWorld-IncrementalGenerator\HelloWorld-IncrementalGenerator.Analysis\HelloWorld-IncrementalGenerator.Analysis.csproj", "{AB200ED0-335D-47CA-B326-BC69F964C882}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABC4142D-6818-4719-BD42-2D5CA1902B2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC4142D-6818-4719-BD42-2D5CA1902B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC4142D-6818-4719-BD42-2D5CA1902B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC4142D-6818-4719-BD42-2D5CA1902B2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262D8FD0-8B2A-484F-98C6-1B6AB16DE843}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262D8FD0-8B2A-484F-98C6-1B6AB16DE843}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262D8FD0-8B2A-484F-98C6-1B6AB16DE843}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262D8FD0-8B2A-484F-98C6-1B6AB16DE843}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D5B386-1C81-4F36-8B66-B7222A879AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D5B386-1C81-4F36-8B66-B7222A879AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D5B386-1C81-4F36-8B66-B7222A879AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D5B386-1C81-4F36-8B66-B7222A879AC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB200ED0-335D-47CA-B326-BC69F964C882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB200ED0-335D-47CA-B326-BC69F964C882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB200ED0-335D-47CA-B326-BC69F964C882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB200ED0-335D-47CA-B326-BC69F964C882}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ABC4142D-6818-4719-BD42-2D5CA1902B2A} = {4347B392-8B6E-4700-A815-A3673DCD622F}
+		{262D8FD0-8B2A-484F-98C6-1B6AB16DE843} = {4347B392-8B6E-4700-A815-A3673DCD622F}
+		{11D5B386-1C81-4F36-8B66-B7222A879AC5} = {ED7887BB-4E62-4A79-82A6-8652EC26B15F}
+		{AB200ED0-335D-47CA-B326-BC69F964C882} = {ED7887BB-4E62-4A79-82A6-8652EC26B15F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5958A1CD-FB02-49E4-8975-1A8508AE3582}
+	EndGlobalSection
+EndGlobal
