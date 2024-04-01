@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\LearnIncrementalValueProvider.Analysis\LearnIncrementalValueProvider.Analysis.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AdditionalFiles Include="Files/*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Files\TextFile1.txt" />
+	</ItemGroup>
+
+</Project>
