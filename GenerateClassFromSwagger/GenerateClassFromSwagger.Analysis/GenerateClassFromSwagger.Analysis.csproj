@@ -3,9 +3,12 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<LangVersion>latest</LangVersion>
+		<Version>1.0.2</Version>
 		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild><!-- Generates a package at build -->
+		<IncludeBuildOutput>false</IncludeBuildOutput><!-- Do not include the generator as a lib dependency -->
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,4 +22,12 @@
 			<TargetPathWithTargetPlatformMoniker Include="@(ResolvedCompileFileDefinitions)" IncludeRuntimeDependency="false" />
 		</ItemGroup>
 	</Target>
+
+	<ItemGroup>
+		<!-- Package the generator in the analyzer directory of the nuget package -->
+		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+
+		<!-- Package the Newtonsoft.Json dependency alongside the generator assembly -->
+		<None Include="$(PkgNewtonsoft_Json)\lib\netstandard2.0\*.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+	</ItemGroup>
 </Project>

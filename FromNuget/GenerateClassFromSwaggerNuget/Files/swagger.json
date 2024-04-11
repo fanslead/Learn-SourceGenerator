@@ -1,0 +1,2426 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "LinguaNex.Host",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Culture": {
+      "post": {
+        "tags": [
+          "Culture"
+        ],
+        "summary": "添加",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Cultures.Dtos.CreateCultureDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Cultures.Dtos.CreateCultureDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Cultures.Dtos.CreateCultureDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<CultureDto>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<CultureDto>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<CultureDto>"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Culture"
+        ],
+        "summary": "分页",
+        "parameters": [
+          {
+            "name": "ProjectId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<CultureDto>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<CultureDto>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<CultureDto>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Culture/{id}": {
+      "delete": {
+        "tags": [
+          "Culture"
+        ],
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Culture/SupportedCultures": {
+      "get": {
+        "tags": [
+          "Culture"
+        ],
+        "summary": "获取支持的地区码",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<SupportedCulture>>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<SupportedCulture>>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<SupportedCulture>>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/OpenApi/SupportedCultures": {
+      "get": {
+        "tags": [
+          "OpenApi"
+        ],
+        "summary": "获取支持的地区码",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<SupportedCulture>>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<SupportedCulture>>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<SupportedCulture>>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/OpenApi/Resources/{projectId}": {
+      "get": {
+        "tags": [
+          "OpenApi"
+        ],
+        "summary": "获取资源",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "项目ID",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cultureName",
+            "in": "query",
+            "description": "地区语言码",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "all",
+            "in": "query",
+            "description": "是否获取所有",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LinguaNex.Dtos.ResourcesDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LinguaNex.Dtos.ResourcesDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LinguaNex.Dtos.ResourcesDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/OpenApi/TransateMultipleLanguages": {
+      "post": {
+        "tags": [
+          "OpenApi"
+        ],
+        "summary": "翻译项目所包含的地区的语言",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.TransateMultipleLanguagesDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.TransateMultipleLanguagesDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.TransateMultipleLanguagesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<Dictionary<String,String>>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<Dictionary<String,String>>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<Dictionary<String,String>>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/OpenApi/Resources/Json/{projectId}": {
+      "get": {
+        "tags": [
+          "OpenApi"
+        ],
+        "summary": "导出JSON文件",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cultureName",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/OpenApi/Resources/toml/{projectId}": {
+      "get": {
+        "tags": [
+          "OpenApi"
+        ],
+        "summary": "导出toml文件",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cultureName",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/OpenApi/Resources/Properties/{projectId}": {
+      "get": {
+        "tags": [
+          "OpenApi"
+        ],
+        "summary": "导出properties文件",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cultureName",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/OpenApi/Resources/xml/{projectId}": {
+      "get": {
+        "tags": [
+          "OpenApi"
+        ],
+        "summary": "导出xml文件",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cultureName",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/OpenApi/Resources/ts/{projectId}": {
+      "get": {
+        "tags": [
+          "OpenApi"
+        ],
+        "summary": "导出ts文件",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cultureName",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Projects": {
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "添加",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Project.Dtos.CreateProjectDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Project.Dtos.CreateProjectDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Project.Dtos.CreateProjectDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ProjectDto>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ProjectDto>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ProjectDto>"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "分页",
+        "parameters": [
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<ProjectDto>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<ProjectDto>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<ProjectDto>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/ProjectAssociation": {
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "创建项目关联",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Project.Dtos.CreateProjectAssociationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Project.Dtos.CreateProjectAssociationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Project.Dtos.CreateProjectAssociationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "删除项目关联",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Project.Dtos.DeleteProjectAssociationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Project.Dtos.DeleteProjectAssociationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Project.Dtos.DeleteProjectAssociationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/{id}": {
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "获取单个",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ProjectDto>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ProjectDto>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ProjectDto>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/enable/{id}": {
+      "put": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "修改是否启用",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Projects/CanAssociationProjects": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "获取可关联项目",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<AssociationProjectsDto>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<AssociationProjectsDto>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<AssociationProjectsDto>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/File/{cultureId}": {
+      "post": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "Json文件批量导入",
+        "parameters": [
+          {
+            "name": "cultureId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "translate",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "translateProvider",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "$ref": "#/components/schemas/LinguaNex.Emuns.TranslateProviderEnum"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources": {
+      "post": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "添加",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.CreateResourceDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.CreateResourceDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.CreateResourceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ResourceDto>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ResourceDto>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ResourceDto>"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "更新",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.UpdateResourceDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.UpdateResourceDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.UpdateResourceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ResourceDto>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ResourceDto>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ResourceDto>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/{id}": {
+      "delete": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/{projectId}/{key}": {
+      "delete": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "删除",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/all/{cultureId}": {
+      "get": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "根据地区获取所有多语言资源",
+        "parameters": [
+          {
+            "name": "cultureId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<ResourceDto>>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<ResourceDto>>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<ResourceDto>>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/all/project/{projectId}": {
+      "get": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "根据项目获取所有多语言资源",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<CultureResourceAllInOneDto>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<CultureResourceAllInOneDto>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<CultureResourceAllInOneDto>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/list": {
+      "get": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "根据地区分页获取多语言资源",
+        "parameters": [
+          {
+            "name": "CultureId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "ProjectId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Key",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<ResourceDto>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<ResourceDto>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<ResourceDto>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/list/project": {
+      "get": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "根据项目分页获取多语言资源",
+        "parameters": [
+          {
+            "name": "CultureId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "ProjectId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Key",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<Dictionary<String,CultureResourceDto>>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<Dictionary<String,CultureResourceDto>>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page<Dictionary<String,CultureResourceDto>>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/list/columns/{projectId}": {
+      "get": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "根据项目分页获取多语言资源表格列数据",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<AntdColumn>>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<AntdColumn>>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<List<AntdColumn>>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/ByCultureAndKey": {
+      "put": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "通过地区和Key匹配更新",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.UpdateResourceByCultureAndKeyDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.UpdateResourceByCultureAndKeyDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.UpdateResourceByCultureAndKeyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ResourceDto>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ResourceDto>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<ResourceDto>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/Test": {
+      "get": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "测试多语言",
+        "parameters": [
+          {
+            "name": "testStr",
+            "in": "query",
+            "description": "测试字符串",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<String>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<String>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<String>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/BatchCreateWithoutTransate": {
+      "post": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "批量创建Resource，不翻译",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.BatchCreateWithoutTransateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.BatchCreateWithoutTransateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.BatchCreateWithoutTransateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/BatchUpdate": {
+      "put": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "批量更新",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.BatchUpdateResourceDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.BatchUpdateResourceDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.BatchUpdateResourceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wheel.Core.Dto.R"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Resources/TransateMultipleLanguages": {
+      "post": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "翻译项目所包含的地区的语言",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.TransateMultipleLanguagesDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.TransateMultipleLanguagesDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.TransateMultipleLanguagesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<Dictionary<String,String>>"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<Dictionary<String,String>>"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/R<Dictionary<String,String>>"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LinguaNex.Const.SupportedCulture": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "displayName": {
+            "type": "string",
+            "nullable": true
+          },
+          "englishName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Cultures.Dtos.CreateCultureDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "syncResource": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "translate": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "translateProvider": {
+            "$ref": "#/components/schemas/LinguaNex.Emuns.TranslateProviderEnum"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Cultures.Dtos.CultureDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Dtos.ResourcesDto": {
+        "type": "object",
+        "properties": {
+          "cultureName": {
+            "type": "string",
+            "nullable": true
+          },
+          "resources": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Emuns.TranslateProviderEnum": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "LinguaNex.Project.Dtos.AssociationProjectsDto": {
+        "type": "object",
+        "properties": {
+          "canAssociationProjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinguaNex.Project.Dtos.ProjectDto"
+            },
+            "description": "可关联项目列表",
+            "nullable": true
+          },
+          "hasAssociationProjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinguaNex.Project.Dtos.ProjectDto"
+            },
+            "description": "已关联项目列表",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Project.Dtos.CreateProjectAssociationDto": {
+        "type": "object",
+        "properties": {
+          "mainProjectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "associationProjectIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Project.Dtos.CreateProjectDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "enalbe": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Project.Dtos.DeleteProjectAssociationDto": {
+        "type": "object",
+        "properties": {
+          "mainProjectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "associationProjectId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Project.Dtos.ProjectDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "enalbe": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.AntdColumn": {
+        "type": "object",
+        "properties": {
+          "dataIndex": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortTitle": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.BatchCreateWithoutTransateDto": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "resouces": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.BatchCreateWithoutTransateResourceDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.BatchCreateWithoutTransateResourceDto": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultureId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.BatchUpdateDto": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultureId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.BatchUpdateResourceDto": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "resouces": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.BatchUpdateDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.CreateResourceDto": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultureId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "projectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "syncCulture": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "translate": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "translateProvider": {
+            "$ref": "#/components/schemas/LinguaNex.Emuns.TranslateProviderEnum"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.CultureResourceAllInOneDto": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.AntdColumn"
+            },
+            "nullable": true
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.CultureResourceDto": {
+        "type": "object",
+        "properties": {
+          "cultureId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.ResourceDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultureId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "projectId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.TransateMultipleLanguagesDto": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "description": "项目Id",
+            "nullable": true
+          },
+          "sourceLanguage": {
+            "type": "string",
+            "description": "源字符串语言",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "description": "翻译内容",
+            "nullable": true
+          },
+          "translateProvider": {
+            "$ref": "#/components/schemas/LinguaNex.Emuns.TranslateProviderEnum"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.UpdateResourceByCultureAndKeyDto": {
+        "type": "object",
+        "properties": {
+          "culture": {
+            "type": "string",
+            "nullable": true
+          },
+          "project": {
+            "type": "string",
+            "nullable": true
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinguaNex.Resources.Dtos.UpdateResourceDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Page<CultureDto>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinguaNex.Cultures.Dtos.CultureDto"
+            },
+            "nullable": true
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Page<Dictionary<String,CultureResourceDto>>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.CultureResourceDto"
+              }
+            },
+            "nullable": true
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Page<ProjectDto>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinguaNex.Project.Dtos.ProjectDto"
+            },
+            "nullable": true
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Page<ResourceDto>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.ResourceDto"
+            },
+            "nullable": true
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "R<AssociationProjectsDto>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/LinguaNex.Project.Dtos.AssociationProjectsDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "R<CultureDto>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/LinguaNex.Cultures.Dtos.CultureDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "R<CultureResourceAllInOneDto>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.CultureResourceAllInOneDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "R<Dictionary<String,String>>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "R<List<AntdColumn>>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.AntdColumn"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "R<List<ResourceDto>>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.ResourceDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "R<List<SupportedCulture>>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinguaNex.Const.SupportedCulture"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "R<ProjectDto>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/LinguaNex.Project.Dtos.ProjectDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "R<ResourceDto>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/LinguaNex.Resources.Dtos.ResourceDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "R<String>": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Wheel.Core.Dto.R": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Culture",
+      "description": "地区"
+    },
+    {
+      "name": "Projects",
+      "description": "项目"
+    },
+    {
+      "name": "Resources",
+      "description": "多语言资源"
+    }
+  ]
+}
